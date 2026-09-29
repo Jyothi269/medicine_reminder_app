@@ -21,7 +21,7 @@ class MedicineReminderApp extends StatelessWidget {
   }
 }
 
-// Medicine data
+// Medicine Model
 class Medicine {
   final String name;
   final String dosage;
@@ -43,29 +43,35 @@ class HomeScreen extends StatefulWidget {
 }
 
 class _HomeScreenState extends State<HomeScreen> {
-  List<Medicine> medicines = [];
+  final List<Medicine> medicines = [];
 
-  // Open Add Medicine screen
-  void openAddMedicine() async {
-    final Medicine? newMedicine = await Navigator.push(
+  // Open Add Medicine Screen
+  Future<void> openAddMedicine() async {
+    final Medicine? medicine = await Navigator.push(
       context,
       MaterialPageRoute(
         builder: (context) => const AddMedicineScreen(),
       ),
     );
 
-    if (newMedicine != null) {
+    if (medicine != null) {
       setState(() {
-        medicines.add(newMedicine);
+        medicines.add(medicine);
       });
     }
   }
 
-  // Delete medicine
+  // Delete Medicine
   void deleteMedicine(int index) {
     setState(() {
       medicines.removeAt(index);
     });
+
+    ScaffoldMessenger.of(context).showSnackBar(
+      const SnackBar(
+        content: Text('Medicine deleted'),
+      ),
+    );
   }
 
   @override
@@ -74,7 +80,9 @@ class _HomeScreenState extends State<HomeScreen> {
       appBar: AppBar(
         title: const Text(
           'Medicine Reminder',
-          style: TextStyle(fontWeight: FontWeight.bold),
+          style: TextStyle(
+            fontWeight: FontWeight.bold,
+          ),
         ),
         centerTitle: true,
       ),
@@ -142,8 +150,9 @@ class _HomeScreenState extends State<HomeScreen> {
 
                         return Card(
                           elevation: 3,
-                          margin: const EdgeInsets.only(bottom: 12),
-
+                          margin: const EdgeInsets.only(
+                            bottom: 12,
+                          ),
                           child: ListTile(
                             leading: const CircleAvatar(
                               child: Icon(Icons.medication),
@@ -184,12 +193,13 @@ class _HomeScreenState extends State<HomeScreen> {
 
               child: ElevatedButton.icon(
                 onPressed: openAddMedicine,
-
                 icon: const Icon(Icons.add),
 
                 label: const Text(
                   'Add Medicine',
-                  style: TextStyle(fontSize: 18),
+                  style: TextStyle(
+                    fontSize: 18,
+                  ),
                 ),
               ),
             ),
@@ -205,16 +215,21 @@ class AddMedicineScreen extends StatefulWidget {
   const AddMedicineScreen({super.key});
 
   @override
-  State<AddMedicineScreen> createState() => _AddMedicineScreenState();
+  State<AddMedicineScreen> createState() =>
+      _AddMedicineScreenState();
 }
 
-class _AddMedicineScreenState extends State<AddMedicineScreen> {
-  final TextEditingController nameController = TextEditingController();
-  final TextEditingController dosageController = TextEditingController();
+class _AddMedicineScreenState
+    extends State<AddMedicineScreen> {
+  final TextEditingController nameController =
+      TextEditingController();
+
+  final TextEditingController dosageController =
+      TextEditingController();
 
   TimeOfDay? selectedTime;
 
-  // Select time
+  // Select Reminder Time
   Future<void> selectTime() async {
     final TimeOfDay? time = await showTimePicker(
       context: context,
@@ -228,20 +243,23 @@ class _AddMedicineScreenState extends State<AddMedicineScreen> {
     }
   }
 
-  // Save medicine
+  // Save Medicine
   void saveMedicine() {
     if (nameController.text.trim().isEmpty ||
         dosageController.text.trim().isEmpty ||
         selectedTime == null) {
       ScaffoldMessenger.of(context).showSnackBar(
         const SnackBar(
-          content: Text('Please fill all details'),
+          content: Text(
+            'Please fill all details',
+          ),
         ),
       );
+
       return;
     }
 
-    final medicine = Medicine(
+    final Medicine medicine = Medicine(
       name: nameController.text.trim(),
       dosage: dosageController.text.trim(),
       time: selectedTime!.format(context),
@@ -254,6 +272,7 @@ class _AddMedicineScreenState extends State<AddMedicineScreen> {
   void dispose() {
     nameController.dispose();
     dosageController.dispose();
+
     super.dispose();
   }
 
@@ -263,7 +282,9 @@ class _AddMedicineScreenState extends State<AddMedicineScreen> {
       appBar: AppBar(
         title: const Text(
           'Add Medicine',
-          style: TextStyle(fontWeight: FontWeight.bold),
+          style: TextStyle(
+            fontWeight: FontWeight.bold,
+          ),
         ),
       ),
 
@@ -284,12 +305,15 @@ class _AddMedicineScreenState extends State<AddMedicineScreen> {
 
             const SizedBox(height: 25),
 
+            // Medicine Name
             TextField(
               controller: nameController,
               decoration: InputDecoration(
                 labelText: 'Medicine Name',
-                hintText: 'Example: Paracetamol',
-                prefixIcon: const Icon(Icons.medication),
+                hintText: 'Enter medicine name',
+                prefixIcon: const Icon(
+                  Icons.medication,
+                ),
                 border: OutlineInputBorder(
                   borderRadius: BorderRadius.circular(12),
                 ),
@@ -298,12 +322,15 @@ class _AddMedicineScreenState extends State<AddMedicineScreen> {
 
             const SizedBox(height: 20),
 
+            // Dosage
             TextField(
               controller: dosageController,
               decoration: InputDecoration(
                 labelText: 'Dosage',
                 hintText: 'Example: 1 tablet',
-                prefixIcon: const Icon(Icons.local_pharmacy),
+                prefixIcon: const Icon(
+                  Icons.local_pharmacy,
+                ),
                 border: OutlineInputBorder(
                   borderRadius: BorderRadius.circular(12),
                 ),
@@ -312,6 +339,7 @@ class _AddMedicineScreenState extends State<AddMedicineScreen> {
 
             const SizedBox(height: 20),
 
+            // Time Selection
             InkWell(
               onTap: selectTime,
 
@@ -320,13 +348,17 @@ class _AddMedicineScreenState extends State<AddMedicineScreen> {
                 padding: const EdgeInsets.all(17),
 
                 decoration: BoxDecoration(
-                  border: Border.all(color: Colors.grey),
+                  border: Border.all(
+                    color: Colors.grey,
+                  ),
                   borderRadius: BorderRadius.circular(12),
                 ),
 
                 child: Row(
                   children: [
-                    const Icon(Icons.access_time),
+                    const Icon(
+                      Icons.access_time,
+                    ),
 
                     const SizedBox(width: 15),
 
@@ -346,6 +378,7 @@ class _AddMedicineScreenState extends State<AddMedicineScreen> {
 
             const SizedBox(height: 35),
 
+            // Save Button
             SizedBox(
               width: double.infinity,
               height: 55,
@@ -353,11 +386,15 @@ class _AddMedicineScreenState extends State<AddMedicineScreen> {
               child: ElevatedButton.icon(
                 onPressed: saveMedicine,
 
-                icon: const Icon(Icons.save),
+                icon: const Icon(
+                  Icons.save,
+                ),
 
                 label: const Text(
                   'Save Medicine',
-                  style: TextStyle(fontSize: 18),
+                  style: TextStyle(
+                    fontSize: 18,
+                  ),
                 ),
               ),
             ),
