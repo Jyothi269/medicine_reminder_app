@@ -1,17 +1,35 @@
-# medicine_reminder_app
+# 💊 Medicine Reminder App
 
-A new Flutter project.
+A simple Flutter-based Medicine Reminder App developed as a college project.
 
-## Getting Started
+The application helps users keep track of their medicines by adding medicine details, dosage, and reminder time.
 
-This project is a starting point for a Flutter application.
+## 📱 Features
 
-A few resources to get you started if this is your first Flutter project:
+- Add medicine
+- Enter medicine name
+- Enter dosage
+- Select reminder time
+- View added medicines
+- Delete medicines
+- Simple and user-friendly interface
 
-- [Learn Flutter](https://docs.flutter.dev/get-started/learn-flutter)
-- [Write your first Flutter app](https://docs.flutter.dev/get-started/codelab)
-- [Flutter learning resources](https://docs.flutter.dev/reference/learning-resources)
+## 🛠️ Technologies Used
 
-For help getting started with Flutter development, view the
-[online documentation](https://docs.flutter.dev/), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
+- Flutter
+- Dart
+- Android Studio
+- Visual Studio Code
+- Git
+- GitHub
+
+## 🎯 Objective
+
+The main objective of this project is to develop a simple application that helps users organize their medicine schedules and remember their medicines on time.
+
+## 🚀 How to Run
+
+1. Clone the repository:
+
+```bash
+git clone https://github.com/Jyothi269/medicine_reminder_app.git
