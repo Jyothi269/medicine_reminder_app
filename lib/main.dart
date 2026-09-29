@@ -95,7 +95,7 @@ class _HomeScreenState extends State<HomeScreen> {
 
           children: [
             const Text(
-              'Good Morning 👋',
+              'Good Morning 👋💊',
               style: TextStyle(
                 fontSize: 26,
                 fontWeight: FontWeight.bold,
