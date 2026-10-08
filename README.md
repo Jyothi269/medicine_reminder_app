@@ -33,3 +33,11 @@ The main objective of this project is to develop a simple application that helps
 
 ```bash
 git clone https://github.com/Jyothi269/medicine_reminder_app.git
+
+## Experiment 2: Exploring Flutter Widgets and Layouts using Row, Column and Stack
+
+This experiment demonstrates the use of Flutter layout widgets such as Row, Column and Stack. In the Medicine Reminder App, Column is used to arrange the main content vertically, Row is used to arrange medicine information horizontally, and Stack is used to display a medicine icon with a notification badge.
+
+### Output
+
+![Row Column Stack Widgets](screenshots/row_column_stack_widget.png)

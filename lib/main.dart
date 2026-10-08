@@ -90,9 +90,9 @@ class _HomeScreenState extends State<HomeScreen> {
       body: Padding(
         padding: const EdgeInsets.all(20),
 
+        // COLUMN EXAMPLE
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
-
           children: [
             const Text(
               'Good Morning 👋💊',
@@ -112,7 +112,116 @@ class _HomeScreenState extends State<HomeScreen> {
               ),
             ),
 
-            const SizedBox(height: 25),
+            const SizedBox(height: 20),
+
+            // ROW EXAMPLE
+            Row(
+              children: [
+                Expanded(
+                  child: Card(
+                    elevation: 2,
+                    child: Padding(
+                      padding: const EdgeInsets.all(15),
+                      child: Row(
+                        children: const [
+                          Icon(
+                            Icons.medication,
+                            size: 30,
+                          ),
+                          SizedBox(width: 10),
+                          Text(
+                            'Medicines',
+                            style: TextStyle(
+                              fontWeight: FontWeight.bold,
+                            ),
+                          ),
+                        ],
+                      ),
+                    ),
+                  ),
+                ),
+
+                const SizedBox(width: 10),
+
+                Expanded(
+                  child: Card(
+                    elevation: 2,
+                    child: Padding(
+                      padding: const EdgeInsets.all(15),
+                      child: Row(
+                        children: const [
+                          Icon(
+                            Icons.access_time,
+                            size: 30,
+                          ),
+                          SizedBox(width: 10),
+                          Text(
+                            'Reminder',
+                            style: TextStyle(
+                              fontWeight: FontWeight.bold,
+                            ),
+                          ),
+                        ],
+                      ),
+                    ),
+                  ),
+                ),
+              ],
+            ),
+
+            const SizedBox(height: 20),
+
+            // STACK EXAMPLE
+            const Text(
+              'Medicine Status',
+              style: TextStyle(
+                fontSize: 20,
+                fontWeight: FontWeight.bold,
+              ),
+            ),
+
+            const SizedBox(height: 10),
+
+            Center(
+              child: Stack(
+                alignment: Alignment.center,
+                children: [
+                  Container(
+                    width: 100,
+                    height: 100,
+                    decoration: BoxDecoration(
+                      shape: BoxShape.circle,
+                      color: Colors.blue.shade100,
+                    ),
+                    child: const Icon(
+                      Icons.medication,
+                      size: 55,
+                    ),
+                  ),
+
+                  Positioned(
+                    right: 0,
+                    top: 0,
+                    child: Container(
+                      padding: const EdgeInsets.all(7),
+                      decoration: const BoxDecoration(
+                        color: Colors.red,
+                        shape: BoxShape.circle,
+                      ),
+                      child: const Text(
+                        '1',
+                        style: TextStyle(
+                          color: Colors.white,
+                          fontWeight: FontWeight.bold,
+                        ),
+                      ),
+                    ),
+                  ),
+                ],
+              ),
+            ),
+
+            const SizedBox(height: 20),
 
             const Text(
               "Today's Medicines",
@@ -157,7 +266,6 @@ class _HomeScreenState extends State<HomeScreen> {
                             leading: const CircleAvatar(
                               child: Icon(Icons.medication),
                             ),
-
                             title: Text(
                               medicine.name,
                               style: const TextStyle(
@@ -165,11 +273,9 @@ class _HomeScreenState extends State<HomeScreen> {
                                 fontSize: 18,
                               ),
                             ),
-
                             subtitle: Text(
                               '${medicine.dosage} • ${medicine.time}',
                             ),
-
                             trailing: IconButton(
                               icon: const Icon(
                                 Icons.delete,
@@ -190,11 +296,9 @@ class _HomeScreenState extends State<HomeScreen> {
             SizedBox(
               width: double.infinity,
               height: 55,
-
               child: ElevatedButton.icon(
                 onPressed: openAddMedicine,
                 icon: const Icon(Icons.add),
-
                 label: const Text(
                   'Add Medicine',
                   style: TextStyle(
@@ -305,7 +409,6 @@ class _AddMedicineScreenState
 
             const SizedBox(height: 25),
 
-            // Medicine Name
             TextField(
               controller: nameController,
               decoration: InputDecoration(
@@ -322,7 +425,6 @@ class _AddMedicineScreenState
 
             const SizedBox(height: 20),
 
-            // Dosage
             TextField(
               controller: dosageController,
               decoration: InputDecoration(
@@ -339,10 +441,9 @@ class _AddMedicineScreenState
 
             const SizedBox(height: 20),
 
-            // Time Selection
+            // ROW EXAMPLE
             InkWell(
               onTap: selectTime,
-
               child: Container(
                 width: double.infinity,
                 padding: const EdgeInsets.all(17),
@@ -359,14 +460,11 @@ class _AddMedicineScreenState
                     const Icon(
                       Icons.access_time,
                     ),
-
                     const SizedBox(width: 15),
-
                     Text(
                       selectedTime == null
                           ? 'Select Reminder Time'
                           : selectedTime!.format(context),
-
                       style: const TextStyle(
                         fontSize: 16,
                       ),
@@ -378,18 +476,15 @@ class _AddMedicineScreenState
 
             const SizedBox(height: 35),
 
-            // Save Button
             SizedBox(
               width: double.infinity,
               height: 55,
 
               child: ElevatedButton.icon(
                 onPressed: saveMedicine,
-
                 icon: const Icon(
                   Icons.save,
                 ),
-
                 label: const Text(
                   'Save Medicine',
                   style: TextStyle(
