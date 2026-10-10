@@ -71,3 +71,18 @@ The StatefulWidget manages the changing data in the application. The setState() 
 Output
 
 "Medicine Reminder State Management" (screenshots/state_management.png)
+
+---------------------------------------------------------------------------------------------------
+Experiment: Custom Widgets and Themes in Flutter
+
+Description
+
+This experiment demonstrates how to create reusable custom widgets and apply themes in Flutter. Custom widgets help organize the user interface into smaller components that can be reused throughout the application. Themes provide a consistent appearance for text, buttons, colors, and other interface elements. In the Medicine Reminder App, a common color theme is used to maintain a consistent design.
+
+Implementation
+
+The MaterialApp widget defines the application's theme using ThemeData. Custom widgets can be created by extending StatelessWidget or StatefulWidget and reused wherever required.
+
+Output
+
+"Custom Widgets and Themes" (screenshots/custom_widgets_themes.png)
