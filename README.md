@@ -29,10 +29,6 @@ Responsive layouts can adapt to available screen dimensions.
 
 ![Responsive UI](screenshots/responsive_ui.png)
 
-## 4. Navigation Between Screens
-Navigator.push() opens another screen, and Navigator.pop() returns to the previous screen.
-
-![Navigation Between Screens](screenshots/navigation_between_screens.png)
 
 ## 5. State Management
 StatefulWidget and setState() can update the interface when application data changes.
